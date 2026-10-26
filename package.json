@@ -1,0 +1,30 @@
+{
+  "name": "penciled-in-legal",
+  "version": "1.0.0",
+  "description": "Penciled In privacy policy, packaged for Android (Capacitor) and Windows (Electron)",
+  "main": "electron/main.js",
+  "private": true,
+  "scripts": {
+    "build:web": "node scripts/build-web.js",
+    "android:add": "cap add android",
+    "android:sync": "npm run build:web && cap sync android",
+    "android:debug": "npm run android:sync && cd android && ./gradlew assembleDebug",
+    "android:release": "npm run android:sync && cd android && ./gradlew bundleRelease",
+    "electron:start": "npm run build:web && electron .",
+    "windows:build": "npm run build:web && electron-builder --win"
+  },
+  "build": {
+    "appId": "com.pencilediin.legal",
+    "productName": "Penciled In Legal",
+    "files": ["electron/**", "www/**"],
+    "directories": { "output": "dist" },
+    "win": { "target": ["nsis", "portable"] }
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  }
+}
