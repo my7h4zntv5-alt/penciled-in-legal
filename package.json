@@ -11,7 +11,7 @@
     "android:debug": "npm run android:sync && cd android && ./gradlew assembleDebug",
     "android:release": "npm run android:sync && cd android && ./gradlew bundleRelease",
     "electron:start": "npm run build:web && electron .",
-    "windows:build": "npm run build:web && electron-builder --win"
+    "windows:build": "npm run build:web && electron-builder --win --publish never"
   },
   "build": {
     "appId": "com.pencilediin.legal",
